@@ -1,3 +1,5 @@
+import '../../styles/Reglas.css'
+
 const Reglas = () => {
     return (
         <div>

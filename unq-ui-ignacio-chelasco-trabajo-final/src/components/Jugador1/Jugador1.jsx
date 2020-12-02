@@ -1,3 +1,5 @@
+import '../../styles/Jugador1.css'
+
 const Jugador1 = () => {
     return (
         <div>
