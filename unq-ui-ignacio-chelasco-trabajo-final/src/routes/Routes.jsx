@@ -16,8 +16,8 @@ import {
 export default function Routes() {
     return (
         <Router>
-            <Switch>
-                <Route exact path="/" component ={ Home } />
+            <Switch>               
+                <Route exact path="/" component ={ Home }/>
                 <Route exact path="/jugador1" component = {Jugador1}/>
                 <Route exact path="/jugador2" component = {Jugador2}/>
                 <Route exact path="/reglas" component = {Reglas}/> 
