@@ -5,14 +5,32 @@
 
 
 .btn {
+    font-family: 'Fortnite';
     margin-top: 1%;
+    font-size: 180%;
 }
 
+.un-jugador {
+    margin-top: 5%;
+}
 
 .titulo-juego {
-    font-size: 300%;
+    font-family: 'Fortnite';
+    font-size: 400%;
 }
 
 .home {
-    margin-top: 10%;
+    margin-top: 5%;
+}
+
+.opciones {
+    margin-top: 2%;
+}
+
+.piedra, .papel, .tijera, .lagarto, .spock {
+    margin-right: 5px;
+    width:90px;
+    height:90px;
+    border-radius:50px;
+    border:1px solid black;
 }

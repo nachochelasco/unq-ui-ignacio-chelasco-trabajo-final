@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
+import Piedra from "../../images/piedra.svg"
+import Papel from "../../images/papel.svg"
+import Tijera from "../../images/tijera.svg"
+import Lagarto from "../../images/lagarto.svg"
+import Spock from "../../images/spock.svg"
 import '../../styles/Home.css'
 
+
 const Home = () => {
+    
     return(
         <div className="Home">
             <div className="home-container-fluid">
                 <div className="row">
-                    <div className="home col-md-12 col-sm-12">     
-                        <div>          
+                    <div className="home col-md-12 col-sm-12">         
+                        <div className="titulo">          
                             <p className="titulo-juego">Piedra, Papel, Tijera, Lagarto, Spock </p>
+                        </div>
+                        <div className="opciones">
+                            <img src={Piedra} className="piedra"></img> 
+                            <img src={Papel} className="papel"></img> 
+                            <img src={Tijera} className="tijera"></img> 
+                            <img src={Lagarto} className="lagarto"></img> 
+                            <img src={Spock} className="spock"></img> 
                         </div>
                         <div className="un-jugador">
                             <Link to={'/jugador1'}>

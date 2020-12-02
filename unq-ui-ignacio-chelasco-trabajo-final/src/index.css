@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Fortnite';
+  src: local('Fortnite'), url(./fonts/Fortnite.ttf) format('truetype');
+}
