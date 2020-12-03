@@ -7,11 +7,9 @@ import Lagarto from "../../images/lagarto.svg"
 import Spock from "../../images/spock.svg"
 import '../../styles/Home.css'
 
-
 const Home = () => {
-    
     return(
-        <div style={{ backgroundColor: 'rgba(241, 217, 161, 0.952)', height: '120vh' }}>
+        
             <div className="Home">
                 <div className="home-container-fluid">
                     <div className="row">
@@ -47,7 +45,6 @@ const Home = () => {
                     </div>      
                 </div>
             </div>
-        </div>
     )
 }
 
