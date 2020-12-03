@@ -9,6 +9,10 @@ git clone https://github.com/nachochelasco/unq-ui-ignacio-chelasco-trabajo-final
 
 npm install
 
-2- Correr el proyecto
+2- Instalar react router
+
+npm install --save react-router-dom
+
+3- Correr el proyecto
 
 npm start 
