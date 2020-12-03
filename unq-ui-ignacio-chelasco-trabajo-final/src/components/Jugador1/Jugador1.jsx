@@ -8,19 +8,20 @@ import Spock from "../../images/spock.svg"
 import '../../styles/Jugador1.css'
 
 const Jugador1 = () => {
-    const [eleccionJugador, setEleccionJugador] = useState() ;
+    const [eleccionJugador, setEleccionJugador] = useState("") ;
     const [puntosJugador, setPuntosJugador] = useState(0) ;
 
-    const [eleccionComputadora, setEleccionComputadora] = useState() ;
+    const [eleccionComputadora, setEleccionComputadora] = useState("") ;
     const [puntosComputadora, setPuntosComputadora] = useState(0) ;
 
-    const [resultado, setResultado] = useState() ;
+    const [resultado, setResultado] = useState("") ;
 
     const eleccionesPosiblesDeComputadora = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"];
 
     const randomNumber = Math.floor(Math.random() * eleccionesPosiblesDeComputadora.length);
     
     const eleccionRandomComputadora = eleccionesPosiblesDeComputadora[randomNumber];
+
 
     function evaluarEleccion(eleccionJugador,eleccionComputadora){
         //Piedra
@@ -87,12 +88,28 @@ const Jugador1 = () => {
          }
     }
 
-    function Jugar(eleccionJugador){
-       
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+         if ((new Date().getTime() - start) > milliseconds) {
+          break;
+         }
+        }
+       }
+
+    function Jugar(eleccionJugador){   
         setEleccionJugador(eleccionJugador);
         setEleccionComputadora(eleccionRandomComputadora);
         evaluarEleccion(eleccionJugador,eleccionRandomComputadora);   
    }
+
+   function Reiniciar(){
+        setEleccionJugador(null);
+        setEleccionComputadora(null);
+        setResultado(null);
+        setPuntosComputadora(0);
+        setPuntosJugador(0);
+    }
 
     return (
        <div className="Jugador1">
@@ -105,15 +122,17 @@ const Jugador1 = () => {
                     </div>
                     <div className="jugador1 col-md-2 col-2"> 
                         <p>Puntos jugador : {puntosJugador}</p>
+                        
                     </div>
                     <div className="jugador1 col-md-2 col-2"> 
                         <p className="tituloJugador1">Jugador vs Computadora</p>
                     </div>
                     <div className="jugador1 col-md-2 col-2"> 
                         <p>Puntos Computadora : {puntosComputadora}</p>
+                        
                     </div>
                     <div className="jugador1 col-md-3 col-3"> 
-                        <button disabled className="botonPiedra">
+                        <button disabled className="botonPiedraPc">
                             <img src={Piedra} className="imgPiedra"/>
                         </button>
                     </div>
@@ -124,16 +143,15 @@ const Jugador1 = () => {
                             <img src={Papel} className="imgPapel"/>
                         </button>   
                     </div>
-                    <div className="jugador1 col-md-2 col-2"> 
-                        <p>Eleccion Jugador : {eleccionJugador}</p>
+                    <div className="jugador1 col-md-2 col-2">
+                        <p className="eleccionJugador">Eleccion Jugador : {eleccionJugador}</p>
                     </div>
-                    <div className="jugador1 col-md-2 col-2"> 
-                    </div>
-                    <div className="jugador1 col-md-2 col-2"> 
-                        <p>Eleccion Computadora : {eleccionComputadora}</p>  
+                    <div className="jugador1 col-md-2 col-2"></div>
+                    <div className="jugador1 col-md-2 col-2">
+                        <p className="eleccionComputadora">Eleccion Computadora : {eleccionComputadora}</p>
                     </div>
                     <div className="jugador1 col-md-3 col-3"> 
-                        <button disabled className="botonPapel">
+                        <button disabled className="botonPapelPc">
                             <img src={Papel} className="imgPapel"/>
                         </button>   
                     </div>
@@ -151,7 +169,7 @@ const Jugador1 = () => {
                     </div>    
                     <div className="jugador1 col-md-2 col-2"></div>
                     <div className="jugador1 col-md-3 col-3"> 
-                        <button disabled className="botonTijera">
+                        <button disabled className="botonTijeraPc">
                             <img src={Tijera} className="imgTijera"/>
                         </button>
                     </div>
@@ -163,10 +181,14 @@ const Jugador1 = () => {
                         </button>
                     </div>
                     <div className="jugador1 col-md-2 col-2"></div>
-                    <div className="jugador1 col-md-2 col-2"></div>
+                    <div className="jugador1 col-md-2 col-2">
+                        <p>¿ Quieres empezar de 0 ?</p>
+                        <button className="btn btn-info" onClick={() => {Reiniciar()}}>Volver a empezar</button> 
+                               
+                    </div>
                     <div className="jugador1 col-md-2 col-2"></div>
                     <div className="jugador1 col-md-3 col-3"> 
-                        <button disabled className="botonLagarto">
+                        <button disabled className="botonLagartoPc">
                             <img src={Lagarto} className="imgLagarto"/>
                         </button>
                     </div>
@@ -178,10 +200,15 @@ const Jugador1 = () => {
                         </button>
                     </div>
                     <div className="jugador1 col-md-2 col-2"></div>
-                    <div className="jugador1 col-md-2 col-2"></div>
+                    <div className="jugador1 col-md-2 col-2">
+                        <p>¿ Quieres salir ?</p>
+                        <Link to={'/'}>
+                        <button className="btn btn-info">Home</button> 
+                        </Link>  
+                    </div>
                     <div className="jugador1 col-md-2 col-2"></div>
                     <div className="jugador1 col-md-3 col-3"> 
-                        <button disabled className="botonSpock">
+                        <button disabled className="botonSpockPc">
                             <img src={Spock} className="imgSpock"/>
                         </button>
                     </div>

@@ -27,25 +27,48 @@ img {
     font-size: 400%;
 }
 
-.botonPiedra {
+.botonPiedra, .botonPiedraPc {
     margin-top: 20%;
     background-color: rgb(173, 239, 241);
 }
 
-.botonPapel {
-    background-color: lightgreen;
+.botonPiedraPc {
+    opacity: 0.3;
 }
 
-.botonTijera {
+.botonPapel, .botonPapelPc {
+    background-color: lightgreen;
+      
+}
+
+.botonPapelPc {
+    opacity: 0.3;
+}
+
+.botonTijera, .botonTijeraPc {
     background-color: cornflowerblue;
 }
 
-.botonLagarto {
-    background-color: rgb(243, 127, 243);
+.botonTijeraPc {
+    opacity: 0.3;
 }
 
-.botonSpock {
+.botonLagarto, .botonLagartoPc {
+    background-color: rgb(214, 110, 40);
+}
+
+.botonLagartoPc {
+    opacity: 0.3;
+}
+
+.botonSpock, .botonSpockPc {
     background-color: gold;
 }
+
+.botonSpockPc {
+    opacity: 0.3;
+}
+
+
 
 
