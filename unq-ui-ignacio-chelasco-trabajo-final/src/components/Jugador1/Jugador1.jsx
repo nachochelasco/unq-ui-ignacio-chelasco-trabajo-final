@@ -123,7 +123,7 @@ const Jugador1 = () => {
                         </button>
                     </div>
                     <div className="jugador1 col-md-2 col-2"> 
-                        <p>Puntos jugador : {puntosJugador}</p>
+                        <p>Puntos Jugador : {puntosJugador}</p>
                         
                     </div>
                     <div className="jugador1 col-md-2 col-2"> 
