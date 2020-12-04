@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import Piedra from "../../images/piedra.svg"
 import Papel from "../../images/papel.svg"
@@ -21,6 +21,7 @@ const Jugador1 = () => {
     const randomNumber = Math.floor(Math.random() * eleccionesPosiblesDeComputadora.length);
     
     const eleccionRandomComputadora = eleccionesPosiblesDeComputadora[randomNumber];
+    
 
 
     function evaluarEleccion(eleccionJugador,eleccionComputadora){
@@ -42,7 +43,7 @@ const Jugador1 = () => {
          //Papel
  
          if((eleccionJugador === "Papel") && ((eleccionComputadora === "Piedra") || (eleccionComputadora === "Spock"))){
-            setPuntosJugador(puntosComputadora + 1);
+            setPuntosJugador(puntosJugador + 1);
             setResultado("Ganaste");
          }
  
@@ -88,6 +89,7 @@ const Jugador1 = () => {
          }
     }
 
+
     function sleep(milliseconds) {
         var start = new Date().getTime();
         for (var i = 0; i < 1e7; i++) {
@@ -99,8 +101,8 @@ const Jugador1 = () => {
 
     function Jugar(eleccionJugador){   
         setEleccionJugador(eleccionJugador);
-        setEleccionComputadora(eleccionRandomComputadora);
-        evaluarEleccion(eleccionJugador,eleccionRandomComputadora);   
+        setEleccionComputadora(eleccionRandomComputadora);      
+        evaluarEleccion(eleccionJugador,eleccionRandomComputadora);  
    }
 
    function Reiniciar(){
