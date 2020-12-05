@@ -205,7 +205,7 @@ const Jugador1 = () => {
                     <div className="jugador1 col-md-2 col-2">
                         <p>¿ Quieres salir ?</p>
                         <Link to={'/'}>
-                        <button className="btn btn-info">Home</button> 
+                            <button className="btn btn-info">Home</button> 
                         </Link>  
                     </div>
                     <div className="jugador1 col-md-2 col-2"></div>
