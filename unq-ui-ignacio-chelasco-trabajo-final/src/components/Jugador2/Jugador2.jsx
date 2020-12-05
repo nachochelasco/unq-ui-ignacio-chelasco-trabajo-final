@@ -113,21 +113,21 @@ const Jugador2 = () => {
     async function JugarJugador1(eleccionJugador1,eleccionJugador2){   
         setEleccionJugador1(eleccionJugador1);
         evaluarEleccion(eleccionJugador1,eleccionJugador2);
-        await sleep(3000)
+        await sleep(4000)
         setResultado("")
     }
 
     async function JugarJugador2(eleccionJugador1,eleccionJugador2){   
         setEleccionJugador2(eleccionJugador2);
         evaluarEleccion(eleccionJugador1,eleccionJugador2);  
-        await sleep(3000)
+        await sleep(4000)
         setResultado("")     
     }
 
    function Reiniciar(){
-        setEleccionJugador1(null);
-        setEleccionJugador2(null);
-        setResultado(null);
+        setEleccionJugador1("");
+        setEleccionJugador2("");
+        setResultado("");
         setPuntosJugador2(0);
         setPuntosJugador1(0);
     }
