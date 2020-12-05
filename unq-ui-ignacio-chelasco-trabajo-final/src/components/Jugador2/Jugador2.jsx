@@ -167,8 +167,8 @@ const Jugador2 = () => {
                     <div className="jugador2 col-md-2 col-2">
                         {eleccionJugador1 === "" ? 
                         <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div> : ""}
+                            <span className="sr-only">Loading...</span>
+                        </div> : <p className="jugador-eleccion">El jugador1 ya eligio</p>}
                     </div>
                     <div className="jugador2 col-md-2 col-2">
                         <p className="resultadoPartidaJugador2">{resultado}</p>
@@ -176,8 +176,8 @@ const Jugador2 = () => {
                     <div className="jugador2 col-md-2 col-2">
                         {eleccionJugador2 === "" ? 
                         <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div> : ""}
+                            <span className="sr-only">Loading...</span>
+                        </div> : <p className="jugador-eleccion">El jugador2 ya eligio</p>}
                     </div>
                     <div className="jugador2 col-md-3 col-3"> 
                         <button className="botonPapel" onClick={() => {JugarJugador2(eleccionJugador1,"Papel")}}>
