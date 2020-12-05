@@ -106,6 +106,7 @@ const Jugador1 = () => {
         evaluarEleccion(eleccionJugador,eleccionRandomComputadora());
         await sleep(2000)
         setEleccionComputadora("")
+        setEleccionJugador("")
         setResultado("")
    }
 
