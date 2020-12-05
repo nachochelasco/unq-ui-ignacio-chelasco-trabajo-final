@@ -22,21 +22,21 @@ const Jugador2 = () => {
          if(( eleccionJugador1 === "Piedra") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Lagarto"))){
             setPuntosJugador1(puntosJugador1 + 1);
             setResultado("Ganador Jugador1");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          if(eleccionJugador1 === eleccionJugador2){
             setResultado("Empate");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          if(( eleccionJugador1 === "Piedra") && ((eleccionJugador2 ==="Papel") || (eleccionJugador2 === "Spock"))){
             setPuntosJugador2(puntosJugador2 + 1);
             setResultado("Ganador Jugador2");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          //Papel
@@ -44,15 +44,15 @@ const Jugador2 = () => {
          if((eleccionJugador1 === "Papel") && ((eleccionJugador2 === "Piedra") || (eleccionJugador2 === "Spock"))){
             setPuntosJugador1(puntosJugador1 + 1);
             setResultado("Ganador Jugador1");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          if((eleccionJugador1 === "Papel") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Lagarto"))){
             setPuntosJugador2(puntosJugador2 + 1);
             setResultado("Ganador Jugador2");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          //Tijera
@@ -60,15 +60,15 @@ const Jugador2 = () => {
          if((eleccionJugador1 === "Tijera") && ((eleccionJugador2 === "Papel") || (eleccionJugador2 === "Lagarto"))){
             setPuntosJugador1(puntosJugador1 + 1);
             setResultado("Ganador Jugador1");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          if((eleccionJugador1 === "Tijera") && ((eleccionJugador2 === "Piedra") || (eleccionJugador2 === "Spock"))){
             setPuntosJugador2(puntosJugador2 + 1);
             setResultado("Ganador Jugador2");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          //Lagarto
@@ -76,15 +76,15 @@ const Jugador2 = () => {
          if((eleccionJugador1 === "Lagarto") && ((eleccionJugador2 === "Papel") || (eleccionJugador2 === "Spock"))){
             setPuntosJugador1(puntosJugador1 + 1);
             setResultado("Ganador Jugador1");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          if((eleccionJugador1 === "Lagarto") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Piedra"))){
             setPuntosJugador2(puntosJugador2 + 1);
             setResultado("Ganador Jugador2");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
  
          //Spock
@@ -92,36 +92,36 @@ const Jugador2 = () => {
          if((eleccionJugador1 === "Spock") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Piedra"))){
             setPuntosJugador1(puntosJugador1 + 1);
             setResultado("Ganador Jugador1");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
+
          }
  
          if((eleccionJugador1 === "Spock") && ((eleccionJugador2 === "Lagarto") || (eleccionJugador2 === "Papel"))){
             setPuntosJugador2(puntosJugador2 + 1);
             setResultado("Ganador Jugador2");
-            setEleccionJugador1(null);
-            setEleccionJugador2(null);
+            setEleccionJugador1("");
+            setEleccionJugador2("");
          }
     }
 
 
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-         if ((new Date().getTime() - start) > milliseconds) {
-          break;
-         }
-        }
-       }
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
 
-    function JugarJugador1(eleccionJugador1,eleccionJugador2){   
+    async function JugarJugador1(eleccionJugador1,eleccionJugador2){   
         setEleccionJugador1(eleccionJugador1);
         evaluarEleccion(eleccionJugador1,eleccionJugador2);
+        await sleep(3000)
+        setResultado("")
     }
 
-    function JugarJugador2(eleccionJugador1,eleccionJugador2){   
+    async function JugarJugador2(eleccionJugador1,eleccionJugador2){   
         setEleccionJugador2(eleccionJugador2);
-        evaluarEleccion(eleccionJugador1,eleccionJugador2);       
+        evaluarEleccion(eleccionJugador1,eleccionJugador2);  
+        await sleep(3000)
+        setResultado("")     
     }
 
    function Reiniciar(){
@@ -164,11 +164,21 @@ const Jugador2 = () => {
                             <img src={Papel} className="imgPapel"/>
                         </button>   
                     </div>
-                    <div className="jugador2 col-md-2 col-2"></div>
+                    <div className="jugador2 col-md-2 col-2">
+                        {eleccionJugador1 === "" ? 
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div> : ""}
+                    </div>
                     <div className="jugador2 col-md-2 col-2">
                         <p className="resultadoPartidaJugador2">{resultado}</p>
                     </div>
-                    <div className="jugador2 col-md-2 col-2"></div>
+                    <div className="jugador2 col-md-2 col-2">
+                        {eleccionJugador2 === "" ? 
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div> : ""}
+                    </div>
                     <div className="jugador2 col-md-3 col-3"> 
                         <button className="botonPapel" onClick={() => {JugarJugador2(eleccionJugador1,"Papel")}}>
                             <img src={Papel} className="imgPapel"/>

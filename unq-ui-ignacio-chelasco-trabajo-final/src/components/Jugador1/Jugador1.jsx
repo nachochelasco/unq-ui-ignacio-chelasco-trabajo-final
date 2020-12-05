@@ -16,15 +16,10 @@ const Jugador1 = () => {
 
     const [resultado, setResultado] = useState("") ;
 
-    const eleccionesPosiblesDeComputadora = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"];
-
-    const randomNumber = Math.floor(Math.random() * eleccionesPosiblesDeComputadora.length);
+    console.log(resultado)
     
-    const eleccionRandomComputadora = eleccionesPosiblesDeComputadora[randomNumber];
-    
-
-
     function evaluarEleccion(eleccionJugador,eleccionComputadora){
+       
         //Piedra
          if(( eleccionJugador === "Piedra") && ((eleccionComputadora === "Tijera") || (eleccionComputadora === "Lagarto"))){
             setPuntosJugador(puntosJugador + 1);
@@ -87,28 +82,37 @@ const Jugador1 = () => {
             setPuntosComputadora(puntosComputadora + 1);
             setResultado("Perdiste");
          }
+
+
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
 
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-         if ((new Date().getTime() - start) > milliseconds) {
-          break;
-         }
-        }
-       }
 
-    function Jugar(eleccionJugador){   
+    function eleccionRandomComputadora() {
+       
+        const eleccionesPosiblesDeComputadora = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"];
+        const randomNumber = Math.floor(Math.random() * eleccionesPosiblesDeComputadora.length);
+        const eleccionRandomComputadora = eleccionesPosiblesDeComputadora[randomNumber];
+        setEleccionComputadora(eleccionRandomComputadora);
+        return eleccionRandomComputadora;
+    }
+
+    async function Jugar(eleccionJugador){   
         setEleccionJugador(eleccionJugador);
-        setEleccionComputadora(eleccionRandomComputadora);      
-        evaluarEleccion(eleccionJugador,eleccionRandomComputadora);  
+        await sleep(2000)
+        evaluarEleccion(eleccionJugador,eleccionRandomComputadora());
+        await sleep(2000)
+        setEleccionComputadora("")
+        setResultado("")
    }
 
    function Reiniciar(){
-        setEleccionJugador(null);
-        setEleccionComputadora(null);
-        setResultado(null);
+        setEleccionJugador("");
+        setEleccionComputadora("");
+        setResultado("");
         setPuntosComputadora(0);
         setPuntosJugador(0);
     }
@@ -150,7 +154,11 @@ const Jugador1 = () => {
                     </div>
                     <div className="jugador1 col-md-2 col-2"></div>
                     <div className="jugador1 col-md-2 col-2">
-                        <p className="eleccionComputadora">Eleccion Computadora : {eleccionComputadora}</p>
+                        <p className="eleccionComputadora">Eleccion Computadora : {eleccionComputadora === "" ? 
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div> : eleccionComputadora}
+                        </p>
                     </div>
                     <div className="jugador1 col-md-3 col-3"> 
                         <button disabled className="botonPapelPc">
