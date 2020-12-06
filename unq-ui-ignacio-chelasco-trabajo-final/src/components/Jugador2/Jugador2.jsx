@@ -14,6 +14,9 @@ const Jugador2 = () => {
     const [eleccionJugador2, setEleccionJugador2] = useState("") ;
     const [puntosJugador2, setPuntosJugador2] = useState(0) ;
 
+    const [yaEligioJugador1, setYaEligioJugador1] = useState(false) ;
+    const [yaEligioJugador2, setYaEligioJugador2] = useState(false) ;
+
     const [resultado, setResultado] = useState("") ;
 
     
@@ -24,12 +27,16 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador1");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          if(eleccionJugador1 === eleccionJugador2){
             setResultado("Empate");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          if(( eleccionJugador1 === "Piedra") && ((eleccionJugador2 ==="Papel") || (eleccionJugador2 === "Spock"))){
@@ -37,6 +44,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador2");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          //Papel
@@ -46,6 +55,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador1");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          if((eleccionJugador1 === "Papel") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Lagarto"))){
@@ -53,6 +64,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador2");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          //Tijera
@@ -62,6 +75,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador1");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          if((eleccionJugador1 === "Tijera") && ((eleccionJugador2 === "Piedra") || (eleccionJugador2 === "Spock"))){
@@ -69,6 +84,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador2");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          //Lagarto
@@ -78,6 +95,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador1");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          if((eleccionJugador1 === "Lagarto") && ((eleccionJugador2 === "Tijera") || (eleccionJugador2 === "Piedra"))){
@@ -85,6 +104,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador2");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
          }
  
          //Spock
@@ -94,6 +115,8 @@ const Jugador2 = () => {
             setResultado("Ganador Jugador1");
             setEleccionJugador1("");
             setEleccionJugador2("");
+            setYaEligioJugador1(false)
+            setYaEligioJugador2(false)   
 
          }
  
@@ -110,18 +133,21 @@ const Jugador2 = () => {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
 
-    async function JugarJugador1(eleccionJugador1,eleccionJugador2){   
+    async function JugarJugador1(eleccionJugador1,eleccionJugador2){
+        setResultado("")  
         setEleccionJugador1(eleccionJugador1);
+        setYaEligioJugador1(true)
         evaluarEleccion(eleccionJugador1,eleccionJugador2);
-        await sleep(4000)
-        setResultado("")
+        
     }
 
-    async function JugarJugador2(eleccionJugador1,eleccionJugador2){   
+    async function JugarJugador2(eleccionJugador1,eleccionJugador2){
+        setResultado("")    
         setEleccionJugador2(eleccionJugador2);
+        setYaEligioJugador2(true)
         evaluarEleccion(eleccionJugador1,eleccionJugador2);  
-        await sleep(4000)
-        setResultado("")     
+
+           
     }
 
    function Reiniciar(){
@@ -165,20 +191,33 @@ const Jugador2 = () => {
                         </button>   
                     </div>
                     <div className="jugador2 col-md-2 col-2">
-                        {eleccionJugador1 === "" ? 
-                        <div class="spinner-border" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div> : <p className="jugador-eleccion">El jugador1 ya eligio</p>}
+                        {eleccionJugador1 === "" && yaEligioJugador2 == true ?
+                            
+                            <div className="">
+                                <p>Esperando eleccion : </p>
+                                <div className="spinner-border" role="status">
+                                </div> 
+                            </div>
+                        : <p className="jugador-eleccion"></p>
+                        }
+                        {eleccionJugador1 != "" ? 
+                            <p>Jugador1 ya eligio</p> : ""}
                     </div>
+
                     <div className="jugador2 col-md-2 col-2">
                         <p className="resultadoPartidaJugador2">{resultado}</p>
                     </div>
                     <div className="jugador2 col-md-2 col-2">
-                        {eleccionJugador2 === "" ? 
-                        <div class="spinner-border" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div> : <p className="jugador-eleccion">El jugador2 ya eligio</p>}
+                        {eleccionJugador2 === "" && yaEligioJugador1 == true ? 
+                            <div className="">
+                            <p>Esperando eleccion : </p>
+                            <div className="spinner-border" role="status">
+                            </div> 
                     </div>
+                    : <p className="jugador-eleccion"></p>}
+                        {eleccionJugador2 != "" ? 
+                            <p>Jugador2 ya eligio</p> : ""}
+                </div>
                     <div className="jugador2 col-md-3 col-3"> 
                         <button className="botonPapel" onClick={() => {JugarJugador2(eleccionJugador1,"Papel")}}>
                             <img src={Papel} className="imgPapel"/>
