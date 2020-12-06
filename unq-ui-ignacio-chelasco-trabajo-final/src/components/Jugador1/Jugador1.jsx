@@ -14,8 +14,6 @@ const Jugador1 = () => {
     const [eleccionComputadora, setEleccionComputadora] = useState("") ;
     const [puntosComputadora, setPuntosComputadora] = useState(0) ;
 
-    const [yaEligioJugador, setYaEligioJugador] = useState(false) ;
-
     const [resultado, setResultado] = useState("") ;
 
     console.log(resultado)
@@ -105,13 +103,12 @@ const Jugador1 = () => {
     async function Jugar(eleccionJugador){ 
         setResultado("")  
         setEleccionJugador(eleccionJugador);
-        setYaEligioJugador(true)
         await sleep(2000)
         evaluarEleccion(eleccionJugador,eleccionRandomComputadora());
         await sleep(3500)
         setEleccionComputadora("")
         setEleccionJugador("")
-        setYaEligioJugador(false)
+        
    }
 
    function Reiniciar(){
@@ -159,7 +156,7 @@ const Jugador1 = () => {
                     </div>
                     <div className="jugador1 col-md-2 col-2"></div>
                     <div className="jugador1 col-md-2 col-2">
-                        <p className="eleccionComputadora">Eleccion Computadora : {eleccionComputadora === "" && yaEligioJugador === true ? 
+                        <p className="eleccionComputadora">Eleccion Computadora : {eleccionComputadora === "" && eleccionJugador != "" ? 
                         <div class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
                         </div> : eleccionComputadora}
